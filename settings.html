@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav class="top-nav">
+      <a class="brand" href="index.html">Simeon</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <div class="clock" id="live-clock" aria-live="polite"></div>
+      </div>
+    </nav>
+
+    <main class="page">
+      <section class="card settings-card">
+        <h1>Settings</h1>
+        <p>Adjust the look and feel of the website.</p>
+
+        <div class="settings-grid">
+          <label class="setting-row" for="color-theme-select">
+            <span>Color theme</span>
+            <select id="color-theme-select">
+              <option value="default">Default</option>
+              <option value="sunset">Sunset</option>
+              <option value="forest">Forest</option>
+              <option value="midnight">Midnight</option>
+            </select>
+          </label>
+
+          <label class="setting-row" for="white-mode-toggle">
+            <span>White mode</span>
+            <div class="setting-actions">
+              <input type="checkbox" id="white-mode-toggle">
+            </div>
+          </label>
+
+          <div class="setting-row">
+            <span>Quick theme switch</span>
+            <button class="night-mode-button" id="night-mode-button" type="button">Night mode</button>
+          </div>
+
+          <div class="setting-row">
+            <span>Light / dark toggle</span>
+            <button class="theme-toggle" id="theme-toggle" type="button">Switch to dark</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Simeon Feil · All rights reserved.</p>
+    </footer>
+
+    <script src="JavaScript.js"></script>
+  </body>
+</html>

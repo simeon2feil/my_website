@@ -59,6 +59,19 @@ body.theme-midnight {
   --accent-2: #818cf8;
 }
 
+body.white-mode {
+  --bg: #ffffff;
+  --bg-accent: #f5f7ff;
+  --surface: #ffffff;
+  --surface-2: #f2f5ff;
+  --text: #111827;
+  --muted: #5f6b7a;
+  --accent: #4f46e5;
+  --accent-2: #7c3aed;
+  --border: rgba(17, 24, 39, 0.12);
+  --shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -171,33 +184,37 @@ button:hover {
 
 .settings-toggle {
   background: var(--surface);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
-.settings-panel {
-  max-width: 900px;
-  margin: 1rem auto 0;
-  padding: 1rem 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-wrap: wrap;
+.settings-card {
+  max-width: 760px;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+}
+
+.settings-grid {
+  display: grid;
   gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .setting-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: var(--surface-2);
 }
 
-.toggle-row {
-  background: var(--surface-2);
-  padding: 0.45rem 0.7rem;
-  border-radius: 999px;
+.setting-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .night-mode-button {

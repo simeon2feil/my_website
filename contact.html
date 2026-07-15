@@ -16,27 +16,9 @@
       </div>
       <div class="nav-actions">
         <div class="clock" id="live-clock" aria-live="polite"></div>
-        <button class="settings-toggle" id="settings-toggle" type="button">Settings</button>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">Light mode</button>
+        <a class="settings-toggle" id="settings-link" href="settings.html">Settings</a>
       </div>
     </nav>
-
-    <div class="settings-panel" id="settings-panel" hidden>
-      <label class="setting-row" for="color-theme-select">
-        <span>Color theme</span>
-        <select id="color-theme-select">
-          <option value="default">Default</option>
-          <option value="sunset">Sunset</option>
-          <option value="forest">Forest</option>
-          <option value="midnight">Midnight</option>
-        </select>
-      </label>
-      <label class="setting-row toggle-row" for="white-mode-toggle">
-        <span>White mode</span>
-        <input type="checkbox" id="white-mode-toggle">
-      </label>
-      <button class="night-mode-button" id="night-mode-button" type="button">Night mode</button>
-    </div>
 
     <main class="page">
       <section class="card contact-card">

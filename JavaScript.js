@@ -1,19 +1,19 @@
 const toggleButton = document.getElementById('theme-toggle');
 const nightModeButton = document.getElementById('night-mode-button');
-const settingsToggle = document.getElementById('settings-toggle');
-const settingsPanel = document.getElementById('settings-panel');
 const colorThemeSelect = document.getElementById('color-theme-select');
 const whiteModeToggle = document.getElementById('white-mode-toggle');
 const clockElement = document.getElementById('live-clock');
 const yearElements = document.querySelectorAll('#year');
 const heroTitle = document.querySelector('.hero h1');
 const heroMessage = document.querySelector('.hero .welcome-line');
+let activeThemeMode = localStorage.getItem('themeMode') || 'light';
 
 function setTheme(mode) {
+  activeThemeMode = mode;
   document.body.classList.toggle('dark', mode === 'dark');
   localStorage.setItem('themeMode', mode);
   if (toggleButton) {
-    toggleButton.textContent = mode === 'dark' ? 'Light mode' : 'Dark mode';
+    toggleButton.textContent = mode === 'dark' ? 'Switch to light' : 'Switch to dark';
   }
 }
 
@@ -28,6 +28,11 @@ function setWhiteMode(enabled) {
   localStorage.setItem('whiteMode', String(enabled));
   if (whiteModeToggle) {
     whiteModeToggle.checked = enabled;
+  }
+  if (enabled) {
+    setTheme('light');
+  } else {
+    setTheme(activeThemeMode);
   }
 }
 
@@ -102,15 +107,16 @@ if (toggleButton) {
   });
 }
 
-if (nightModeButton) {
-  nightModeButton.addEventListener('click', () => {
-    setTheme('dark');
+if (toggleButton) {
+  toggleButton.addEventListener('click', () => {
+    const nextMode = document.body.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(nextMode);
   });
 }
 
-if (settingsToggle && settingsPanel) {
-  settingsToggle.addEventListener('click', () => {
-    settingsPanel.hidden = !settingsPanel.hidden;
+if (nightModeButton) {
+  nightModeButton.addEventListener('click', () => {
+    setTheme('dark');
   });
 }
 
