@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="device-width", initial-scale="1.0">
-    <title>contact - personal website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <a href="index.html">
-            <span>Home</span>
-        </a>
-        <a href="projects.html">
-            <span>projects</span>
-        </a>
-        <a href="Contact.html">
-            <span>Contact</span>
-        </a>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <a class="brand" href="index.html">Simeon</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
     </nav>
 
-    <hr>
-    <div id="contact">
+    <main class="page">
+      <section class="card contact-card">
         <h1>Contact</h1>
-        <p>
-            <a href="https://www.instagram.com/simeon88404/" target="_blank">
-                <img class="icon" src="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons" alt="instagram">
-            </a>
-        </p>
-        <p>
-            <a href="https://github.com/simeon2feil" target="_blank">
-                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github">
-            </a>
-        </p>
-        <p>Email: simeon2feil@gmail.com</p>
-    </div>
-</body>
+        <p>Feel free to reach out if you want to talk about projects, tech, or ideas.</p>
+
+        <div class="social-links">
+          <a class="social-link" href="https://www.instagram.com/simeon88404/" target="_blank" rel="noreferrer">📷 Instagram</a>
+          <a class="social-link" href="https://github.com/simeon2feil" target="_blank" rel="noreferrer">💻 GitHub</a>
+        </div>
+
+        <p class="email">Email: simeon2feil@gmail.com</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Simeon</p>
+    </footer>
+
+    <script src="JavaScript.js"></script>
+  </body>
 </html>

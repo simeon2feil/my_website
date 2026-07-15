@@ -3,61 +3,63 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>personal website</title>
+    <title>Personal Website</title>
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <nav>
-      <a href="index.html">
-        <span>home</span>       
-      </a>
-      <a href="projects.html">
-        <span>projects</span>
-      </a>
-      <a href="contact.html">
-        <span>Contact</span>
-      </a>
+    <nav class="top-nav">
+      <a class="brand" href="index.html">Simeon</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
     </nav>
 
-    <hr>
-    <div id="me">
-      <h1>Hi, im Simeon</h1>
-      <p>From Germany, building stuff and like learning new technology.</p>
-    </div>
-    <hr>
+    <main class="page">
+      <section class="hero card">
+        <p class="eyebrow">Maker • Student • Builder</p>
+        <h1>Hi, I’m Simeon</h1>
+        <p>From Germany, building things and learning new technology every day.</p>
+      </section>
 
-    <div id="about">
-      <h2>About me</h2>
-      <p>I am Simeon, an 15-Year-old student from Germany</p>
-      <p>I started exploring IT and programming, 3D modeling and PCB designing and electronics</p>
-      <P> Currently im focused on improving my programming and learning Frontend development</P>
-    </div>
-    <hr>
+      <section class="card" id="about">
+        <h2>About me</h2>
+        <p>I am Simeon, a 15-year-old student from Germany.</p>
+        <p>I started exploring IT, programming, 3D modeling, PCB design, and electronics.</p>
+        <p>Right now, I’m focused on improving my programming and learning frontend development.</p>
+      </section>
 
-    <div id="skills">
-      <h2>Technical skills</h2>
+      <section class="card" id="skills">
+        <h2>Technical skills</h2>
+        <ul>
+          <li>HTML, CSS, and JavaScript</li>
+          <li>Git and GitHub</li>
+          <li>Python</li>
+          <li>C#</li>
+          <li>Arduino and ESP32 programming</li>
+          <li>FreeCAD and Onshape</li>
+          <li>PCB design</li>
+          <li>FPV drone freestyle flying</li>
+        </ul>
+      </section>
 
-      <ul>
-        <li>HTML CSS JavaScript</li>
-        <li>Github and Git</li>
-        <li>Python</li>
-        <li>C#</li>
-        <li>Arduino and ESP32 programming</li>
-        <li>free CAd and Onshape</li>
-        <li>PCB design</li>
-        <li>FPV drone freestyle flying</li>
-      </ul>
-    </div>
-    <hr>
+      <section class="card" id="experience">
+        <h2>Other experience</h2>
+        <ul>
+          <li>Beginner level Blender</li>
+          <li>Basic Linux knowledge</li>
+        </ul>
+      </section>
+    </main>
 
-    <div id="experience">
-      <h2>Other experience</h2>
-      <ul>
-        <li>Beginner level Blender</li>
-        <li>Basic linux knowledge</li>
-      </ul>
-    </div>
-</body>
+    <footer>
+      <p>© <span id="year"></span> Simeon</p>
+    </footer>
+
+    <script src="JavaScript.js"></script>
+  </body>
 </html>
