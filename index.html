@@ -16,14 +16,31 @@
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+      <div class="nav-actions">
+        <div class="clock" id="live-clock" aria-live="polite"></div>
+        <button class="settings-toggle" id="settings-toggle" type="button">⚙️ Settings</button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☀️ Light</button>
+      </div>
     </nav>
+
+    <div class="settings-panel" id="settings-panel" hidden>
+      <label class="setting-row" for="color-theme-select">
+        <span>Color theme</span>
+        <select id="color-theme-select">
+          <option value="default">Default</option>
+          <option value="sunset">Sunset</option>
+          <option value="forest">Forest</option>
+          <option value="midnight">Midnight</option>
+        </select>
+      </label>
+      <button class="night-mode-button" id="night-mode-button" type="button">⚠️ Night mode</button>
+    </div>
 
     <main class="page">
       <section class="hero card">
         <p class="eyebrow">Maker • Student • Builder</p>
         <h1>Hi, I’m Simeon</h1>
-        <p>From Germany, building things and learning new technology every day.</p>
+        <p class="welcome-line">From Germany, building things and learning new technology every day.</p>
       </section>
 
       <section class="card" id="about">
@@ -57,7 +74,7 @@
     </main>
 
     <footer>
-      <p>© <span id="year"></span> Simeon</p>
+      <p>© <span id="year"></span> Simeon Feil · All rights reserved.</p>
     </footer>
 
     <script src="JavaScript.js"></script>
