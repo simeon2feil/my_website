@@ -1,3 +1,4 @@
+const toggleButton = document.getElementById('theme-toggle');
 const quickThemeButton = document.getElementById('quick-theme-toggle');
 const nightModeButton = document.getElementById('night-mode-button');
 const colorThemeSelect = document.getElementById('color-theme-select');
@@ -22,6 +23,9 @@ function setTheme(mode) {
   }
 
   localStorage.setItem('themeMode', mode);
+  if (toggleButton) {
+    toggleButton.textContent = isDark ? 'Switch to light' : 'Switch to dark';
+  }
   // control sparkles when theme changes
   if (isDark) {
     createSparkles();
@@ -131,6 +135,13 @@ function cycleColorTheme() {
 
 if (quickThemeButton) {
   quickThemeButton.addEventListener('click', cycleColorTheme);
+}
+
+if (toggleButton) {
+  toggleButton.addEventListener('click', () => {
+    const nextMode = document.body.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(nextMode);
+  });
 }
 
 if (nightModeButton) {
