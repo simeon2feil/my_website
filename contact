@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="device-width", initial-scale="1.0">
+    <title>contact - personal website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">
+            <span>Home</span>
+        </a>
+        <a href="projects.html">
+            <span>projects</span>
+        </a>
+        <a href="Contact.html">
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <hr>
+    <div id="contact">
+        <h1>Contact</h1>
+        <p>
+            <a href="https://www.instagram.com/simeon88404/" target="_blank">
+                <img class="icon" src="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons" alt="instagram">
+            </a>
+        </p>
+        <p>
+            <a href="https://github.com/simeon2feil" target="_blank">
+                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github">
+            </a>
+        </p>
+        <p>Email: simeon2feil@gmail.com</p>
+    </div>
+</body>
+</html>
