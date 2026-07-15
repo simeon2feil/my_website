@@ -95,7 +95,7 @@ if (toggleButton) {
 
 if (nightModeButton) {
   nightModeButton.addEventListener('click', () => {
-    const confirmed = window.confirm('⚠️ This switches to night mode. It can feel a bit rough at 3 AM, but it looks cool. Continue?');
+    const confirmed = window.confirm(' This switches to night mode. It can feel a bit rough at 3 AM, but it looks cool. Continue?');
     if (confirmed) {
       setTheme('dark');
     }
