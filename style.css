@@ -91,8 +91,20 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 25%);
   z-index: -2;
+}
+
+/* dark mode: subtle stars / vignette */
+body.dark::before {
+  background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), transparent 8%),
+              radial-gradient(circle at 90% 80%, rgba(255,255,255,0.015), transparent 8%),
+              linear-gradient(180deg, rgba(0,0,0,0.18), transparent 40%);
+}
+
+/* white mode: warm sun glow */
+body.white-mode::before {
+  background: radial-gradient(circle at 20% 20%, rgba(255,223,88,0.18), transparent 18%),
+              radial-gradient(circle at 80% 20%, rgba(255,200,88,0.06), transparent 20%);
 }
 
 .top-nav {
@@ -386,8 +398,14 @@ li {
   background: var(--accent);
   opacity: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   animation: sparkle-fall 5s linear infinite;
+  transition: opacity 0.25s ease;
+}
+
+/* only visible in dark mode */
+body.dark .sparkle {
+  opacity: 0.9;
 }
 
 @keyframes sparkle-fall {

@@ -1,4 +1,4 @@
-const toggleButton = document.getElementById('theme-toggle');
+const quickThemeButton = document.getElementById('quick-theme-toggle');
 const nightModeButton = document.getElementById('night-mode-button');
 const colorThemeSelect = document.getElementById('color-theme-select');
 const whiteModeToggle = document.getElementById('white-mode-toggle');
@@ -7,13 +7,26 @@ const yearElements = document.querySelectorAll('#year');
 const heroTitle = document.querySelector('.hero h1');
 const heroMessage = document.querySelector('.hero .welcome-line');
 let activeThemeMode = localStorage.getItem('themeMode') || 'light';
+let sparkleElements = [];
 
 function setTheme(mode) {
   activeThemeMode = mode;
-  document.body.classList.toggle('dark', mode === 'dark');
+  const isDark = mode === 'dark';
+  document.body.classList.toggle('dark', isDark);
+  // when switching to light, keep white-mode if user enabled it
+  const whiteEnabled = localStorage.getItem('whiteMode') === 'true';
+  if (!isDark && whiteEnabled) {
+    document.body.classList.add('white-mode');
+  } else if (isDark) {
+    document.body.classList.remove('white-mode');
+  }
+
   localStorage.setItem('themeMode', mode);
-  if (toggleButton) {
-    toggleButton.textContent = mode === 'dark' ? 'Switch to light' : 'Switch to dark';
+  // control sparkles when theme changes
+  if (isDark) {
+    createSparkles();
+  } else {
+    removeSparkles();
   }
 }
 
@@ -84,9 +97,10 @@ function revealCards() {
 }
 
 function createSparkles() {
+  // only create sparkles if in dark mode and none exist
+  if (!document.body.classList.contains('dark')) return;
+  if (sparkleElements.length) return;
   const count = 20;
-  const fragment = document.createDocumentFragment();
-
   for (let i = 0; i < count; i += 1) {
     const sparkle = document.createElement('span');
     sparkle.className = 'sparkle';
@@ -94,24 +108,29 @@ function createSparkles() {
     sparkle.style.top = `${Math.random() * 100}vh`;
     sparkle.style.animationDelay = `${Math.random() * 5}s`;
     sparkle.style.background = ['#4f46e5', '#7c3aed', '#38bdf8', '#ff7a1a'][Math.floor(Math.random() * 4)];
-    fragment.appendChild(sparkle);
+    document.body.appendChild(sparkle);
+    sparkleElements.push(sparkle);
   }
-
-  document.body.appendChild(fragment);
 }
 
-if (toggleButton) {
-  toggleButton.addEventListener('click', () => {
-    const isDark = document.body.classList.contains('dark');
-    setTheme(isDark ? 'light' : 'dark');
-  });
+function removeSparkles() {
+  if (!sparkleElements.length) return;
+  sparkleElements.forEach(el => el.remove());
+  sparkleElements = [];
 }
 
-if (toggleButton) {
-  toggleButton.addEventListener('click', () => {
-    const nextMode = document.body.classList.contains('dark') ? 'light' : 'dark';
-    setTheme(nextMode);
-  });
+const colorThemes = ['default', 'sunset', 'forest', 'midnight'];
+
+function cycleColorTheme() {
+  const current = localStorage.getItem('colorTheme') || 'default';
+  const idx = colorThemes.indexOf(current);
+  const next = colorThemes[(idx + 1) % colorThemes.length];
+  setColorTheme(next);
+  if (colorThemeSelect) colorThemeSelect.value = next;
+}
+
+if (quickThemeButton) {
+  quickThemeButton.addEventListener('click', cycleColorTheme);
 }
 
 if (nightModeButton) {
@@ -129,6 +148,16 @@ if (colorThemeSelect) {
 if (whiteModeToggle) {
   whiteModeToggle.addEventListener('change', (event) => {
     setWhiteMode(event.target.checked);
+  });
+}
+
+// ensure settings link always navigates when present (some browsers may block inactive anchors)
+const settingsLink = document.getElementById('settings-link');
+if (settingsLink) {
+  settingsLink.addEventListener('click', (e) => {
+    // allow normal navigation but ensure it works as fallback
+    e.preventDefault();
+    window.location.href = settingsLink.getAttribute('href') || 'settings.html';
   });
 }
 
@@ -152,4 +181,4 @@ updateGreeting();
 updateClock();
 setInterval(updateClock, 1000);
 revealCards();
-createSparkles();
+// sparkles are created/removed by setTheme() as needed
