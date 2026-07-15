@@ -14,20 +14,54 @@
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+      <div class="nav-actions">
+        <div class="clock" id="live-clock" aria-live="polite"></div>
+        <button class="settings-toggle" id="settings-toggle" type="button">Settings</button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">Light mode</button>
+      </div>
     </nav>
+
+    <div class="settings-panel" id="settings-panel" hidden>
+      <label class="setting-row" for="color-theme-select">
+        <span>Color theme</span>
+        <select id="color-theme-select">
+          <option value="default">Default</option>
+          <option value="sunset">Sunset</option>
+          <option value="forest">Forest</option>
+          <option value="midnight">Midnight</option>
+        </select>
+      </label>
+      <label class="setting-row toggle-row" for="white-mode-toggle">
+        <span>White mode</span>
+        <input type="checkbox" id="white-mode-toggle">
+      </label>
+      <button class="night-mode-button" id="night-mode-button" type="button">Night mode</button>
+    </div>
 
     <main class="page">
       <section class="card contact-card">
-        <h1>Contact</h1>
-        <p>Feel free to reach out if you want to talk about projects, tech, or ideas.</p>
-
-        <div class="social-links">
-          <a class="social-link" href="https://www.instagram.com/simeon88404/" target="_blank" rel="noreferrer">📷 Instagram</a>
-          <a class="social-link" href="https://github.com/simeon2feil" target="_blank" rel="noreferrer">💻 GitHub</a>
+        <div class="contact-intro">
+          <h1>Contact</h1>
+          <p>Feel free to reach out if you want to talk about projects, tech, or ideas.</p>
         </div>
 
-        <p class="email">Email: simeon2feil@gmail.com</p>
+        <div class="contact-grid">
+          <div class="contact-card-item">
+            <h2>Reach me</h2>
+            <p>Email: simeon2feil@gmail.com</p>
+            <a class="contact-link" href="mailto:simeon2feil@gmail.com">Send an email</a>
+          </div>
+
+          <div class="contact-card-item">
+            <h2>Social</h2>
+            <div class="social-links">
+              <a class="social-link" href="https://www.instagram.com/simeon88404/" target="_blank" rel="noreferrer">Instagram</a>
+              <a class="social-link" href="https://github.com/simeon2feil" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="contact-note">Open to coding, electronics, and creative build ideas.</p>
       </section>
     </main>
 

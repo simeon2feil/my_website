@@ -3,6 +3,7 @@ const nightModeButton = document.getElementById('night-mode-button');
 const settingsToggle = document.getElementById('settings-toggle');
 const settingsPanel = document.getElementById('settings-panel');
 const colorThemeSelect = document.getElementById('color-theme-select');
+const whiteModeToggle = document.getElementById('white-mode-toggle');
 const clockElement = document.getElementById('live-clock');
 const yearElements = document.querySelectorAll('#year');
 const heroTitle = document.querySelector('.hero h1');
@@ -12,7 +13,7 @@ function setTheme(mode) {
   document.body.classList.toggle('dark', mode === 'dark');
   localStorage.setItem('themeMode', mode);
   if (toggleButton) {
-    toggleButton.textContent = mode === 'dark' ? '☀️ Light' : '🌙 Dark';
+    toggleButton.textContent = mode === 'dark' ? 'Light mode' : 'Dark mode';
   }
 }
 
@@ -20,6 +21,14 @@ function setColorTheme(theme) {
   document.body.classList.remove('theme-default', 'theme-sunset', 'theme-forest', 'theme-midnight');
   document.body.classList.add(`theme-${theme}`);
   localStorage.setItem('colorTheme', theme);
+}
+
+function setWhiteMode(enabled) {
+  document.body.classList.toggle('white-mode', enabled);
+  localStorage.setItem('whiteMode', String(enabled));
+  if (whiteModeToggle) {
+    whiteModeToggle.checked = enabled;
+  }
 }
 
 function updateClock() {
@@ -95,7 +104,7 @@ if (toggleButton) {
 
 if (nightModeButton) {
   nightModeButton.addEventListener('click', () => {
-    const confirmed = window.confirm(' This switches to night mode. It can feel a bit rough at 3 AM, but it looks cool. Continue?');
+    const confirmed = window.confirm('This switches to night mode. It can feel a bit rough at 3 AM, but it looks cool. Continue?');
     if (confirmed) {
       setTheme('dark');
     }
@@ -114,11 +123,19 @@ if (colorThemeSelect) {
   });
 }
 
+if (whiteModeToggle) {
+  whiteModeToggle.addEventListener('change', (event) => {
+    setWhiteMode(event.target.checked);
+  });
+}
+
 const savedTheme = localStorage.getItem('themeMode') || 'light';
 const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
+const savedWhiteMode = localStorage.getItem('whiteMode') === 'true';
 
 setTheme(savedTheme);
 setColorTheme(savedColorTheme);
+setWhiteMode(savedWhiteMode);
 
 if (colorThemeSelect) {
   colorThemeSelect.value = savedColorTheme;

@@ -140,7 +140,8 @@ body.dark .top-nav {
 }
 
 button,
-select {
+select,
+input[type="checkbox"] {
   border: none;
   border-radius: 999px;
   padding: 0.6rem 0.9rem;
@@ -150,6 +151,13 @@ select {
   background: var(--surface);
   color: var(--text);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="checkbox"] {
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
 }
 
 button:hover {
@@ -184,6 +192,12 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+}
+
+.toggle-row {
+  background: var(--surface-2);
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
 }
 
 .night-mode-button {
@@ -289,11 +303,40 @@ li {
   object-fit: cover;
 }
 
+.contact-intro {
+  margin-bottom: 1.25rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.contact-card-item {
+  background: var(--surface-2);
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.contact-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-note {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
 .social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1rem 0;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
 }
 
 .social-link {
@@ -302,7 +345,8 @@ li {
   gap: 0.5rem;
   padding: 0.65rem 0.9rem;
   border-radius: 999px;
-  background: var(--surface-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 
 .social-icon {
@@ -364,7 +408,8 @@ footer {
     justify-content: flex-start;
   }
 
-  .project-grid {
+  .project-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 }
