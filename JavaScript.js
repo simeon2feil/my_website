@@ -1,19 +1,22 @@
 const toggleButtons = document.querySelectorAll('[data-theme-toggle]');
+const themeSelects = document.querySelectorAll('[data-theme-select]');
 const clockElement = document.getElementById('live-clock');
 const yearElements = document.querySelectorAll('#year');
 const heroTitle = document.querySelector('.hero h1');
 const heroMessage = document.querySelector('.hero .welcome-line');
-let activeThemeMode = localStorage.getItem('themeMode') || 'light';
+let activeThemeMode = localStorage.getItem('themeMode') || 'default';
 
 function setTheme(mode) {
   activeThemeMode = mode;
-  const isDark = mode === 'dark';
-  document.body.classList.toggle('dark', isDark);
-  document.body.classList.remove('white-mode');
+  document.body.classList.remove('theme-default', 'theme-white', 'theme-green', 'theme-yellow', 'theme-black');
+  document.body.classList.add(`theme-${mode}`);
 
   localStorage.setItem('themeMode', mode);
   toggleButtons.forEach((button) => {
-    button.textContent = isDark ? 'Switch to light' : 'Switch to dark';
+    button.textContent = `Theme: ${mode}`;
+  });
+  themeSelects.forEach((select) => {
+    select.value = mode;
   });
 
   document.body.classList.remove('theme-transition');
@@ -74,12 +77,20 @@ function revealCards() {
 
 toggleButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    const nextMode = document.body.classList.contains('dark') ? 'light' : 'dark';
-    setTheme(nextMode);
+    const themes = ['default', 'white', 'green', 'yellow', 'black'];
+    const current = activeThemeMode || 'default';
+    const nextIndex = (themes.indexOf(current) + 1) % themes.length;
+    setTheme(themes[nextIndex]);
   });
 });
 
-const savedTheme = localStorage.getItem('themeMode') || 'light';
+themeSelects.forEach((select) => {
+  select.addEventListener('change', (event) => {
+    setTheme(event.target.value);
+  });
+});
+
+const savedTheme = localStorage.getItem('themeMode') || 'default';
 
 setTheme(savedTheme);
 
