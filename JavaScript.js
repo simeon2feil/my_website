@@ -1,6 +1,6 @@
 const toggleButton = document.getElementById('theme-toggle');
 const nightModeButton = document.getElementById('night-mode-button');
-const colorThemeSelect = document.getElementById('color-theme-select');
+const colorThemeSelects = document.querySelectorAll('[data-theme-select]');
 const clockElement = document.getElementById('live-clock');
 const yearElements = document.querySelectorAll('#year');
 const heroTitle = document.querySelector('.hero h1');
@@ -23,6 +23,9 @@ function setColorTheme(theme) {
   document.body.classList.remove('theme-default', 'theme-sunset', 'theme-forest', 'theme-midnight');
   document.body.classList.add(`theme-${theme}`);
   localStorage.setItem('colorTheme', theme);
+  colorThemeSelects.forEach((select) => {
+    select.value = theme;
+  });
 }
 
 function updateClock() {
@@ -79,7 +82,6 @@ function cycleColorTheme() {
   const idx = colorThemes.indexOf(current);
   const next = colorThemes[(idx + 1) % colorThemes.length];
   setColorTheme(next);
-  if (colorThemeSelect) colorThemeSelect.value = next;
 }
 
 if (toggleButton) {
@@ -95,11 +97,11 @@ if (nightModeButton) {
   });
 }
 
-if (colorThemeSelect) {
-  colorThemeSelect.addEventListener('change', (event) => {
+colorThemeSelects.forEach((select) => {
+  select.addEventListener('change', (event) => {
     setColorTheme(event.target.value);
   });
-}
+});
 
 const savedTheme = localStorage.getItem('themeMode') || 'light';
 const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
@@ -107,9 +109,9 @@ const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
 setTheme(savedTheme);
 setColorTheme(savedColorTheme);
 
-if (colorThemeSelect) {
-  colorThemeSelect.value = savedColorTheme;
-}
+colorThemeSelects.forEach((select) => {
+  select.value = savedColorTheme;
+});
 
 yearElements.forEach((element) => {
   element.textContent = new Date().getFullYear();

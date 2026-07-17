@@ -79,7 +79,7 @@ body.white-mode {
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #e7e7e9;
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
@@ -154,7 +154,7 @@ input[type="checkbox"] {
   box-shadow: var(--shadow);
   background: var(--surface);
   color: var(--text);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 input[type="checkbox"] {
@@ -164,8 +164,30 @@ input[type="checkbox"] {
   accent-color: var(--accent);
 }
 
-button:hover {
-  transform: translateY(-1px);
+button:hover,
+select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
+}
+
+.nav-links a,
+.social-link,
+.contact-link,
+.settings-toggle {
+  transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-links a:hover,
+.social-link:hover,
+.contact-link:hover,
+.settings-toggle:hover {
+  transform: translateY(-2px);
+  color: var(--accent);
+}
+
+.theme-select {
+  min-width: 110px;
+  appearance: none;
 }
 
 .theme-toggle {
@@ -249,17 +271,6 @@ button:hover {
   color: white;
   position: relative;
   overflow: hidden;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: auto -20px -20px auto;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.16);
-  filter: blur(6px);
 }
 
 .eyebrow {
