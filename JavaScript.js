@@ -1,6 +1,4 @@
-const toggleButton = document.getElementById('theme-toggle');
-const nightModeButton = document.getElementById('night-mode-button');
-const colorThemeSelects = document.querySelectorAll('[data-theme-select]');
+const toggleButtons = document.querySelectorAll('[data-theme-toggle]');
 const clockElement = document.getElementById('live-clock');
 const yearElements = document.querySelectorAll('#year');
 const heroTitle = document.querySelector('.hero h1');
@@ -14,18 +12,17 @@ function setTheme(mode) {
   document.body.classList.remove('white-mode');
 
   localStorage.setItem('themeMode', mode);
-  if (toggleButton) {
-    toggleButton.textContent = isDark ? 'Switch to light' : 'Switch to dark';
-  }
-}
-
-function setColorTheme(theme) {
-  document.body.classList.remove('theme-default', 'theme-sunset', 'theme-forest', 'theme-midnight');
-  document.body.classList.add(`theme-${theme}`);
-  localStorage.setItem('colorTheme', theme);
-  colorThemeSelects.forEach((select) => {
-    select.value = theme;
+  toggleButtons.forEach((button) => {
+    button.textContent = isDark ? 'Switch to light' : 'Switch to dark';
   });
+
+  document.body.classList.remove('theme-transition');
+  void document.body.offsetWidth;
+  document.body.classList.add('theme-transition');
+
+  window.setTimeout(() => {
+    document.body.classList.remove('theme-transition');
+  }, 700);
 }
 
 function updateClock() {
@@ -75,43 +72,16 @@ function revealCards() {
   });
 }
 
-const colorThemes = ['default', 'sunset', 'forest', 'midnight'];
-
-function cycleColorTheme() {
-  const current = localStorage.getItem('colorTheme') || 'default';
-  const idx = colorThemes.indexOf(current);
-  const next = colorThemes[(idx + 1) % colorThemes.length];
-  setColorTheme(next);
-}
-
-if (toggleButton) {
-  toggleButton.addEventListener('click', () => {
+toggleButtons.forEach((button) => {
+  button.addEventListener('click', () => {
     const nextMode = document.body.classList.contains('dark') ? 'light' : 'dark';
     setTheme(nextMode);
-  });
-}
-
-if (nightModeButton) {
-  nightModeButton.addEventListener('click', () => {
-    setTheme('dark');
-  });
-}
-
-colorThemeSelects.forEach((select) => {
-  select.addEventListener('change', (event) => {
-    setColorTheme(event.target.value);
   });
 });
 
 const savedTheme = localStorage.getItem('themeMode') || 'light';
-const savedColorTheme = localStorage.getItem('colorTheme') || 'default';
 
 setTheme(savedTheme);
-setColorTheme(savedColorTheme);
-
-colorThemeSelects.forEach((select) => {
-  select.value = savedColorTheme;
-});
 
 yearElements.forEach((element) => {
   element.textContent = new Date().getFullYear();

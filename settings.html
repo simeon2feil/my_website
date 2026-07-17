@@ -16,6 +16,7 @@
       </div>
       <div class="nav-actions">
         <div class="clock" id="live-clock" aria-live="polite"></div>
+        <button class="theme-toggle" data-theme-toggle type="button">Switch to dark</button>
       </div>
     </nav>
 
@@ -25,17 +26,10 @@
         <p>Adjust the look and feel of the website.</p>
 
         <div class="settings-grid">
-          <label class="setting-row" for="color-theme-select">
-            <span>Color theme</span>
-            <select id="color-theme-select" class="theme-select" data-theme-select aria-label="Choose color theme">
-              <option value="default">Default</option>
-              <option value="sunset">Sunset</option>
-              <option value="forest">Forest</option>
-              <option value="midnight">Midnight</option>
-            </select>
-          </label>
-
-          <!-- White mode and quick toggle moved to homepage; kept settings minimal -->
+          <div class="setting-row">
+            <span>Dark / light mode</span>
+            <button class="theme-toggle" data-theme-toggle type="button">Switch to dark</button>
+          </div>
         </div>
       </section>
     </main>
