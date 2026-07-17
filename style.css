@@ -192,7 +192,7 @@ body.theme-black .top-nav {
 button,
 select,
 input[type="checkbox"] {
-  border: none;
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.6rem 0.9rem;
   cursor: pointer;
@@ -242,6 +242,16 @@ button:active {
   color: white;
   min-width: 118px;
   box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
+  border-color: transparent;
+}
+
+select.theme-toggle {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
 }
 
 .theme-toggle:hover {
